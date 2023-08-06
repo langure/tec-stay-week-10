@@ -33,3 +33,23 @@ Supervised learning provides an effective way to train models for sentiment anal
 [Deep learning for sentiment analysis](https://wires.onlinelibrary.wiley.com/doi/am-pdf/10.1002/widm.1253)
 
 # Code examples
+
+Step 1: Data Preprocessing and Tokenization
+
+We start by importing the necessary libraries, including PyTorch, TorchText, and other modules. We use TorchText to preprocess and tokenize the IMDb dataset, which contains movie reviews labeled as positive or negative. We define fields for text and labels, specify tokenization using spaCy, and load the IMDb dataset. Additionally, we build a vocabulary and create DataLoader for batching the data.
+
+Step 2: Building the Sentiment Analysis Model
+
+Next, we define the sentiment analysis model using the SentimentModel class. This model is a simple LSTM-based architecture. It consists of an embedding layer to convert words into dense vectors, an LSTM layer to process the embedded sequence, and a linear layer for the final prediction. We instantiate the model, set up pre-trained embeddings using the GloVe word vectors, and move the model to the GPU if available.
+
+Step 3: Training the Model
+
+We define the loss function (BCEWithLogitsLoss) and the optimizer (Adam) for training. Then, we run a loop for a specified number of epochs to train the model. In each epoch, we forward propagate the input sequences through the model, calculate the loss by comparing the predicted output with the ground truth output, and update the model's parameters using backpropagation and the Adam optimizer.
+
+Step 4: Testing the Model
+
+After training, we define a function (predict_sentiment) to test the model by predicting the sentiment of new movie reviews. We provide two sample reviews (positive and negative), and the function returns the sentiment probabilities for each review. The probabilities indicate how confident the model is that each review is positive or negative.
+
+Step 5: Displaying Results
+
+We test the trained model using two sample movie reviews: one positive and one negative. The model predicts the sentiment probabilities for each review and displays the results.
